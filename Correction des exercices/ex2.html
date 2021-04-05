@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercice 2</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+    	<div class="offset-3 col-6">
+    		<h1 class="text-center text-primary my-5">Day calculator</h1>
+    		<form>
+				<div class="form-group">
+					<label for="month">Month :</label>
+					<input type="number" id="month" class="form-control" placeholder="Type a month here">
+				</div>
+				<div class="form-group">
+					<label for="year">Year :</label>
+					<input type="number" id="year" class="form-control" placeholder="Type a year here">
+				</div>
+				<div>
+					<button onclick="numberOfDays()" class="btn btn-success btn-block" type="button">Calculate</button>
+				</div>
+			</form>
+    	</div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Correction d'exercice -->
+    <script type="text/javascript">
+    	function numberOfDays()
+    	{
+    		// step 1: récupérer les valeurs saisies dans les champs.
+    		// Utilser aussi la fonction parseInt() pour cnvertir en Entier
+    		var month = Number(document.getElementById('month').value);
+    		var year = parseInt(document.getElementById('year').value);
+    	
+    		// step 2: calculer le nombre de jours de l'année
+    		var numberOfDay = 0;
+
+    		if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+    			numberOfDay = 31;
+    		}else if (month == 4 || month == 6 || month == 9 || month == 11)
+    		{
+    			numberOfDay = 30;
+    		}else{
+    			if (year % 4 == 0) {
+    				numberOfDay = 29;
+    			}else{
+    				numberOfDay = 28;
+    			}
+    		}
+
+    		alert(numberOfDay);
+
+    		// step 3 : show result 
+    	}
+    </script>
+
+</body>
+</html>
