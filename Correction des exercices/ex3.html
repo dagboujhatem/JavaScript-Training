@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercice 3</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <h1 class="text-center text-primary my-5">Calculator</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="number" id="nombre" class="form-control" placeholder="Type a number here" min="0" max="10">
+                    </div>
+                    <button onclick="multiplication()" type="button" class="btn btn-success btn-block mt-2">Calculate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Correction d'exercice -->
+    <script type="text/javascript">
+        function multiplication()
+        {
+            var nombre = Number(document.getElementById('nombre').value);
+            //alert(nombre)
+            // 1st way (premire manière)
+
+            /* var resultat = nombre * 0;
+            alert(resultat);
+             var resultat = nombre * 1;
+            alert(resultat);
+             var resultat = nombre * 2;
+            alert(resultat);
+             var resultat = nombre * 3;
+            alert(resultat);
+             var resultat = nombre * 4;
+            alert(resultat);
+             var resultat = nombre * 5;
+            alert(resultat);
+             var resultat = nombre * 6;
+            alert(resultat);
+             var resultat = nombre * 7;
+            alert(resultat);
+             var resultat = nombre * 8;
+            alert(resultat);
+             var resultat = nombre * 9;
+            alert(resultat);
+             var resultat = nombre * 10;
+            alert(resultat);*/
+
+
+            // second way (deuxième manière)
+            /*for (var i = 0; i <= 10; i++) {
+                var resultat = nombre * i;
+                alert(resultat);
+            }*/
+
+            // third way (troisième manière)
+            for (var i = 0; i <= 10; i++) {
+                var resultat = nombre * i;
+                document.write(nombre + " * " + i + " = " + resultat+"<br>");
+            }
+
+        }
+    </script>
+    
+
+</body>
+</html>

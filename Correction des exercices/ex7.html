@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercice 7</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-2 col-8">
+                <h1 class="text-center text-primary my-4 text-uppercase">inscription</h1>
+                <form onsubmit="return verifierValidation()" action="welcome.html" method="post">
+                    <!-- full name -->
+                    <div class="form-group">
+                        <label for="fullname">Nom et prénom *:</label>
+                        <input type="text" id="fullname" class="form-control" placeholder="Saisir votre nom et prénom ici">
+                        <div class="invalid-feedback d-block" id="fullnameError"></div>
+                    </div>
+                    
+
+                    <!-- cin  -->
+                    <div class="form-group">
+                        <label for="cin">CIN *:</label>
+                        <input type="text" id="cin" class="form-control" placeholder="Saisir votre cin ici">
+                        <div class="invalid-feedback d-block" id="CINError"></div>
+
+                    </div>
+
+                    <!-- email -->
+                    <div class="form-group">
+                        <label for="email">E-mail *:</label>
+                        <input type="text" id="email" class="form-control" placeholder="Saisir votre adresse e-mail ici">
+                        <div class="invalid-feedback d-block" id="emailError"></div>
+
+                    </div>
+
+                    <!-- Niveau -->
+                    <span>Niveau * : </span>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="niveau" id="Universitaire" checked>
+                      <label class="form-check-label" for="Universitaire">
+                        Universitaire
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="niveau" id="secondaire">
+                      <label class="form-check-label" for="secondaire">
+                        Sécondaire
+                      </label>
+                    </div>
+                     <div class="form-check form-check-inline mb-3">
+                      <input class="form-check-input" type="radio" name="niveau" id="autre">
+                      <label class="form-check-label" for="autre">
+                        Autre
+                      </label>
+                    </div>
+                    <div class="invalid-feedback d-block" id="niveauError"></div>
+
+
+                    <!-- module de formation -->
+                     <div class="form-group">
+                        <label for="moduleSelect">Module de formation *:</label>
+                        <select type="text" id="moduleSelect" class="form-control">
+                            <option>Bureautique</option>
+                            <option>SE et Réseaux info.</option>
+                            <option>TIC</option>
+                        </select>
+                        <div class="invalid-feedback d-block" id="moduleError"></div>
+                    </div>
+
+                    <!-- text -->
+                    <div>
+                        <span class="text-danger float-right mb-3">(*) champs obligatoires.</span>
+                    </div>
+                    <!-- buttons -->
+                    <button type="submit" class="btn btn-success btn-block mt-2">Envoyer</button>
+                    <button type="reset" class="btn btn-secondary btn-block mt-2">Annuler</button>
+                </form>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Correction d'exercice -->
+    <script type="text/javascript">
+        function verifierValidation()
+        {            
+            var fullname = document.getElementById("fullname").value;
+            var cin = document.getElementById("cin").value;
+            var email = document.getElementById("email").value;
+            // var fullname = document.getElementById("fullname").value;
+            var moduleSelect = document.getElementById("moduleSelect").value;
+            var numberOfError = 0;
+
+            // tests sur le fullname
+            if(fullname == "")
+            {
+                document.getElementById("fullnameError").innerText="Le champs nom et prénom est obligatoire.";
+                ;
+                numberOfError ++;
+            }else{
+                document.getElementById("fullnameError").innerText= "";
+            }
+
+            //  test sur CIN
+             if(cin == "")
+            {
+                document.getElementById("CINError").innerText="Le champs CIN est obligatoire.";
+                ;
+                numberOfError ++;
+            }else{
+                document.getElementById("CINError").innerText= "";
+            }
+
+
+            // test sur numberOfError
+            if(numberOfError >  0){
+                // pour empecher de passer à la page suivante
+                return false;
+            }else{
+                // pour passer à la page suivante 
+                return true;
+            }
+
+        }
+    </script>
+    
+
+</body>
+</html>

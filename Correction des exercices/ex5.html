@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercice 5</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <h1 class="text-center text-primary my-5">Calculator</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="nombreSaisi">Number:</label>
+                        <input type="number" id="nombreSaisi" class="form-control" placeholder="Type a number here">
+                    </div>
+                    <button onclick="caree()" type="button" class="btn btn-success btn-block mt-2">Calculer le carrée</button>
+
+                    <div id="resultat"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Correction d'exercice -->
+    <script type="text/javascript">
+        function caree()
+        {
+            
+            var nombreSaisi = Number(document.getElementById("nombreSaisi").value);
+
+
+            var carre = nombreSaisi * nombreSaisi;
+            // document.write("Le carrée est : " + carre);
+
+            // document.getElementById('resultat').innerText = "Le carée de " + nombreSaisi +" est : " + carre;
+
+            document.getElementById('resultat').innerHTML = 
+            "<h1 class='text-center text-primary my-5'> Le carée de " + nombreSaisi + " est : " + carre + "</h1>";
+
+
+        }
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercice 4</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <h1 class="text-center text-primary my-5">Calculator</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="dc1">DC 1:</label>
+                        <input type="number" id="dc1" class="form-control" placeholder="Type a number here" min="0" max="20">
+                    </div>
+                     <div class="form-group">
+                        <label for="dc2">DC 2:</label>
+                        <input type="number" id="dc2" class="form-control" placeholder="Type a number here" min="0" max="20">
+                    </div>
+                     <div class="form-group">
+                        <label for="ds">Ds:</label>
+                        <input type="number" id="ds" class="form-control" placeholder="Type a number here" min="0" max="20">
+                    </div>
+                    <button onclick="moyenne()" type="button" class="btn btn-success btn-block mt-2">Calculer moyenne</button>
+
+                    <div id="moy"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Correction d'exercice -->
+    <script type="text/javascript">
+        function moyenne()
+        {
+            
+            var dc1 = Number(document.getElementById("dc1").value);
+            var dc2 = Number(document.getElementById("dc2").value);
+            var ds = Number(document.getElementById("ds").value);
+
+            var avg = (dc1 + dc2 + (2 * ds)) / 4 ;
+
+            // document.write("Moyenne est : " + avg);
+
+            // document.getElementById('moy').innerText = "Moyenne est : " + avg;
+
+            document.getElementById('moy').innerHTML = 
+            "<h1 class='text-center text-primary my-5'> Moyenne est : " + avg + "</h1>";
+
+
+        }
+    </script>
+    
+
+</body>
+</html>

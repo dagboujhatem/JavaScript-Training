@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercice 6</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <h1 class="text-center text-primary my-5">Calculator</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="">Opération :</label>
+                        <input type="text" id="operationSaisi" class="form-control" placeholder="Type here ...">
+                    </div>
+                    <button onclick="calcul()" type="button" class="btn btn-success btn-block mt-2">=</button>
+                     <div class="form-group mt-3">
+                        <input type="text" id="resultat" class="form-control" placeholder="Result here" disabled="true">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Correction d'exercice -->
+    <script type="text/javascript">
+        function calcul()
+        {
+            
+            var operationSaisi = document.getElementById("operationSaisi").value;
+            //console.log(operationSaisi);
+            var resultat = eval(operationSaisi);
+            //console.log(resultat);
+            document.getElementById('resultat').value =  resultat;
+
+
+        }
+    </script>
+    
+
+</body>
+</html>
