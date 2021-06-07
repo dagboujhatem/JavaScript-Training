@@ -104,20 +104,53 @@
             if(fullname == "")
             {
                 document.getElementById("fullnameError").innerText="Le champs nom et prénom est obligatoire.";
-                ;
+                document.getElementById('fullname').classList.remove("is-valid");
+                document.getElementById('fullname').classList.add("is-invalid");
                 numberOfError ++;
             }else{
                 document.getElementById("fullnameError").innerText= "";
+                document.getElementById('fullname').classList.remove("is-invalid");
+                document.getElementById('fullname').classList.add("is-valid");
             }
 
             //  test sur CIN
-             if(cin == "")
+             if(cin == "" || cin.length != 8)
             {
-                document.getElementById("CINError").innerText="Le champs CIN est obligatoire.";
-                ;
+                document.getElementById("cin").classList.remove("is-valid");
+                document.getElementById("cin").classList.add("is-invalid");
                 numberOfError ++;
+                if(cin == "")
+                {
+                    document.getElementById("CINError").innerText = "Le champs CIN est obligatoire.";
+                ;
+                }else{
+                    document.getElementById("CINError").innerText = "Ce chamaps doit comporter 8 caractère.";
+                }
+
             }else{
                 document.getElementById("CINError").innerText= "";
+                document.getElementById("cin").classList.remove("is-invalid");
+                document.getElementById("cin").classList.add("is-valid");
+            }
+
+
+            // teszt sur l'email
+
+             if(email == "" || email.indexOf('@') == -1)
+            {
+                document.getElementById("email").classList.remove("is-valid");
+                document.getElementById("email").classList.add("is-invalid");
+                numberOfError ++;
+                if(email == "")
+                {
+                    document.getElementById("emailError").innerText="Le champs e-mail est obligatoire.";
+                }else{
+                    document.getElementById("emailError").innerText="Le champs e-mail est invalid.";
+                }
+            }else{
+                document.getElementById("emailError").innerText= "";
+                document.getElementById("email").classList.remove("is-invalid");
+                document.getElementById("email").classList.add("is-valid");
             }
 
 
