@@ -41,7 +41,7 @@
                     <span>Niveau * : </span>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="niveau" id="Universitaire" checked>
+                      <input class="form-check-input" type="radio" name="niveau" id="Universitaire">
                       <label class="form-check-label" for="Universitaire">
                         Universitaire
                       </label>
@@ -65,9 +65,10 @@
                      <div class="form-group">
                         <label for="moduleSelect">Module de formation *:</label>
                         <select type="text" id="moduleSelect" class="form-control">
-                            <option>Bureautique</option>
-                            <option>SE et Réseaux info.</option>
-                            <option>TIC</option>
+                            <option selected="true" disabled="true" value="">SVP selectionner un module de formation</option>
+                            <option value="Bureautique">Bureautique</option>
+                            <option value="SE et Réseaux info.">SE et Réseaux info.</option>
+                            <option value="TIC">TIC</option>
                         </select>
                         <div class="invalid-feedback d-block" id="moduleError"></div>
                     </div>
@@ -96,8 +97,13 @@
             var fullname = document.getElementById("fullname").value;
             var cin = document.getElementById("cin").value;
             var email = document.getElementById("email").value;
-            // var fullname = document.getElementById("fullname").value;
+            // niveau scolaire
+            var Universitaire = document.getElementById("Universitaire");
+            var secondaire = document.getElementById("secondaire");
+            var autre = document.getElementById("autre"); 
+            // module de formation 
             var moduleSelect = document.getElementById("moduleSelect").value;
+
             var numberOfError = 0;
 
             // tests sur le fullname
@@ -124,7 +130,7 @@
                     document.getElementById("CINError").innerText = "Le champs CIN est obligatoire.";
                 ;
                 }else{
-                    document.getElementById("CINError").innerText = "Ce chamaps doit comporter 8 caractère.";
+                    document.getElementById("CINError").innerText = "Ce chamaps doit comporter 8 caractères.";
                 }
 
             }else{
@@ -134,7 +140,7 @@
             }
 
 
-            // teszt sur l'email
+            // test sur l'email
 
              if(email == "" || email.indexOf('@') == -1)
             {
@@ -145,12 +151,59 @@
                 {
                     document.getElementById("emailError").innerText="Le champs e-mail est obligatoire.";
                 }else{
-                    document.getElementById("emailError").innerText="Le champs e-mail est invalid.";
+                    document.getElementById("emailError").innerText="Le champs e-mail est invalid (e-mail doit comporter le caractère @ ).";
                 }
             }else{
                 document.getElementById("emailError").innerText= "";
                 document.getElementById("email").classList.remove("is-invalid");
                 document.getElementById("email").classList.add("is-valid");
+            }
+
+
+            // test sur le niveau
+            if(!(Universitaire.checked || secondaire.checked || autre.checked))
+            {
+                 document.getElementById("Universitaire").classList.remove("is-valid");
+                document.getElementById("Universitaire").classList.add("is-invalid");
+
+                 document.getElementById("secondaire").classList.remove("is-valid");
+                document.getElementById("secondaire").classList.add("is-invalid");
+
+                 document.getElementById("autre").classList.remove("is-valid");
+                document.getElementById("autre").classList.add("is-invalid");
+
+                document.getElementById("niveauError").innerText= "SVP sélectionner votre niveau.";
+
+                numberOfError ++;
+            }else{
+
+                document.getElementById("Universitaire").classList.remove("is-invalid");
+                document.getElementById("Universitaire").classList.add("is-valid");
+                
+                 document.getElementById("secondaire").classList.remove("is-invalid");
+                document.getElementById("secondaire").classList.add("is-valid");
+
+                 document.getElementById("autre").classList.remove("is-invalid");
+                document.getElementById("autre").classList.add("is-valid");
+
+                document.getElementById("niveauError").innerText= "";
+
+            }
+
+            // test sur module de formation 
+
+            if(moduleSelect == "")
+            {
+
+                document.getElementById("moduleSelect").classList.remove("is-valid");
+                document.getElementById("moduleSelect").classList.add("is-invalid");
+                document.getElementById("moduleError").innerText= "SVP sélectionner un module de formation.";
+                numberOfError ++;
+            }else{
+                 document.getElementById("moduleSelect").classList.remove("is-invalid");
+                document.getElementById("moduleSelect").classList.add("is-valid");
+                document.getElementById("moduleError").innerText= "";
+
             }
 
 
