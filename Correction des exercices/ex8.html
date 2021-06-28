@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+	 <!-- bootstrap container -->
+    <div class="container-fluid">
+    	<div class="row">
+    		<div class="offset-3 col-sm-6">
+                <h1 class="text-primary text-center my-5">Create event form </h1>
+                <div id="invalidDateError"></div>
+    			<form method="post" onsubmit="return verifierDates()" action="welcome.html">
+                    <div class="form-group">
+                        <label for="startDate">Start Date :</label>
+                        <input type="date" name="date" id="startDate" class="form-control">
+                        <div class="invalid-feedback d-block" id="startDateError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date :</label>
+                        <input type="date" name="date" id="endDate" class="form-control">
+                        <div class="invalid-feedback d-block" id="endDateError"></div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Create event</button>
+                </form>
+    		</div>
+    	</div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- exercice 8 -->
+    <script type="text/javascript">
+        function verifierDates() {
+            // 1. récuperer les valeurs de start date & end date 
+            var inputStartDate = document.getElementById('startDate').value;
+            var inputEndDate = document.getElementById('endDate').value;
+
+            // 2. testes pour valider les deux date ne sont pas vides
+            var numberOfError = 0; 
+            if(inputStartDate == "")
+            {
+                document.getElementById('startDate').classList.remove('is-valid');
+                document.getElementById('startDate').classList.add('is-invalid');
+                document.getElementById('startDateError').innerText ="Please select a date."
+                numberOfError ++ ;
+            }else{
+                document.getElementById('startDate').classList.remove('is-invalid');
+                document.getElementById('startDate').classList.add('is-valid');
+                document.getElementById('startDateError').innerText = "";
+
+            }
+
+            if(inputEndDate == "")
+            {
+                document.getElementById('endDate').classList.remove('is-valid');
+                document.getElementById('endDate').classList.add('is-invalid');
+                document.getElementById('endDateError').innerText = "Please select a date.";
+                numberOfError ++;
+
+            }else{
+                document.getElementById('endDate').classList.remove('is-invalid');
+                document.getElementById('endDate').classList.add('is-valid');
+                document.getElementById('endDateError').innerText = "" ;               
+            }
+
+            // 3. test sur startDate < endDate
+            var startDate = new Date(inputStartDate);
+            var endDate = new Date(inputEndDate);
+
+            if(startDate <= endDate)
+            {
+
+            }else{
+                numberOfError ++;
+                // display error in inputs 
+                document.getElementById('startDate').classList.remove('is-valid');
+                document.getElementById('startDate').classList.add('is-invalid');
+                document.getElementById('endDate').classList.remove('is-valid');
+                document.getElementById('endDate').classList.add('is-invalid');
+                // display error message
+                document.getElementById('invalidDateError').innerHTML = ` <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>Error : </strong> You should be select a valid range of date.
+                </div>`;
+            }
+
+            // 4. return statement
+            if(numberOfError == 0)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>
